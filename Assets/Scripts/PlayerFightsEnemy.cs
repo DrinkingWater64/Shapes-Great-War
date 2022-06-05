@@ -24,6 +24,7 @@ public class PlayerFightsEnemy : MonoBehaviour
     }
     void Start()
     {
+
     }
 
     private void Awake()
@@ -35,6 +36,7 @@ public class PlayerFightsEnemy : MonoBehaviour
     void LockEnemy(GameObject enemyObject)
     {
         _currentEnemy = enemyObject;
+        _currentEnemy.GetComponent<Enemy>().LockedOn();
         SpellCast(_currentEnemy);
     }
 

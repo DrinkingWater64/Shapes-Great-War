@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Enemy : MonoBehaviour, Attackable
+public class Enemy : MonoBehaviour, Attackable, Lockable
 {
     // TextMeshProUGUI _text;
     public string _spell = "testtext";
@@ -22,9 +22,19 @@ public class Enemy : MonoBehaviour, Attackable
         }
     }
 
+    public void LockedOn()
+    {
+        gameObject.transform.GetChild(1).gameObject.SetActive(true);
+    }
+
     public void TakeDamage(float damageInput)
     {
         hp -= damageInput;
+    }
+
+    public void Unlocked()
+    {
+        gameObject.transform.GetChild(1).gameObject.SetActive(false);
     }
 
 
@@ -48,4 +58,10 @@ public interface Attackable
     public void TakeDamage(float damageInput);
 
     void IsDead();
+}
+
+public interface Lockable
+{
+    void LockedOn();
+    void Unlocked();
 }

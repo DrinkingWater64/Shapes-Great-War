@@ -74,13 +74,15 @@ public class PlayerEnemyQueue : MonoBehaviour
     {
         int nextIndex = (_currentIndex + 1) % _gameObjects.Count;
         SetCurrentEnemy(_gameObjects[nextIndex], nextIndex);
+        enemyDetected(_currentEnemy);
     }
 
     void SwitchEnemyBackward()
     {
-        int prevIndex = (_currentIndex - 1) % _gameObjects.Count;
+        int len = _gameObjects.Count;
+        int prevIndex = (_currentIndex + len - 1) % len;
         SetCurrentEnemy(_gameObjects[prevIndex], prevIndex);
-
+        enemyDetected(_currentEnemy);
     }
 
 
@@ -103,13 +105,16 @@ public class PlayerEnemyQueue : MonoBehaviour
     {
         if (!Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Tab))
         {
+            Debug.Log("Going forward");
             SwitchEnemyForward();
         }
         ProcessEnemies();
 
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Tab))
         {
+            Debug.Log("going back");
             SwitchEnemyBackward();
+
         }
     }
 }

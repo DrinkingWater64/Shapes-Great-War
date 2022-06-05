@@ -7,6 +7,7 @@ public class PlayerEnemyQueue : MonoBehaviour
 {
 
     public event Action<GameObject> enemyDetected;
+    public event Action<GameObject> enemySwitched;
     public List<GameObject> _gameObjects = new List<GameObject>();
     [SerializeField]
     GameObject _currentEnemy;
@@ -74,7 +75,7 @@ public class PlayerEnemyQueue : MonoBehaviour
     {
         int nextIndex = (_currentIndex + 1) % _gameObjects.Count;
         SetCurrentEnemy(_gameObjects[nextIndex], nextIndex);
-        enemyDetected(_currentEnemy);
+        enemySwitched(_currentEnemy);
     }
 
     void SwitchEnemyBackward()
@@ -82,7 +83,7 @@ public class PlayerEnemyQueue : MonoBehaviour
         int len = _gameObjects.Count;
         int prevIndex = (_currentIndex + len - 1) % len;
         SetCurrentEnemy(_gameObjects[prevIndex], prevIndex);
-        enemyDetected(_currentEnemy);
+        enemySwitched(_currentEnemy);
     }
 
 

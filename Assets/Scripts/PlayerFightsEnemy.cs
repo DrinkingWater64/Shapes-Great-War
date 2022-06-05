@@ -13,6 +13,7 @@ public class PlayerFightsEnemy : MonoBehaviour
     private void OnEnable()
     {
         gameObject.GetComponent<PlayerEnemyQueue>().enemyDetected += LockEnemy;
+        gameObject.GetComponent<PlayerEnemyQueue>().enemySwitched += LockNewEnemy;
         textMatcher.TextMatched += dealDamage;
     }
 
@@ -20,6 +21,7 @@ public class PlayerFightsEnemy : MonoBehaviour
     {
         gameObject.GetComponent<PlayerEnemyQueue>().enemyDetected -= SpellCast;
         textMatcher.TextMatched -= dealDamage;
+        gameObject.GetComponent<PlayerEnemyQueue>().enemySwitched -= LockNewEnemy;
         
     }
     void Start()
@@ -38,6 +40,12 @@ public class PlayerFightsEnemy : MonoBehaviour
         _currentEnemy = enemyObject;
         _currentEnemy.GetComponent<Enemy>().LockedOn();
         SpellCast(_currentEnemy);
+    }
+
+    void LockNewEnemy(GameObject newEnemy)
+    {
+        _currentEnemy.GetComponent<Enemy>().Unlocked();
+        LockEnemy(newEnemy);
     }
 
     void SpellCast(GameObject enemyObject)

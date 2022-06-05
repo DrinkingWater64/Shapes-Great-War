@@ -516,6 +516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f50b978f806426459bf2ec4ca693350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageOutput: 12
   textMatcher: {fileID: 0}
 --- !u!1 &1665112060
 GameObject:
@@ -664,3 +665,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spell: testtext
+  hp: 12

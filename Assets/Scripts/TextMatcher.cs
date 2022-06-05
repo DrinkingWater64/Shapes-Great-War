@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class TextMatcher: MonoBehaviour 
 {
+
+    public event Action TextMatched;
+
     string _currentText = string.Empty;
     string _remainingText = string.Empty;
 
@@ -82,7 +86,16 @@ public class TextMatcher: MonoBehaviour
 
     bool IsTextComplete()
     {
-        return _remainingText.Length == 0;
+        if (_remainingText.Length == 0)
+        {
+
+        TextMatched();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 

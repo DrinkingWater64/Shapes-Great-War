@@ -53,6 +53,8 @@ public class PlayerEnemyQueue : MonoBehaviour
         }
     }
 
+
+
     void UpdateEnemiesAfterDelete()
     {
             if (_gameObjects.Count > 0) 
@@ -74,6 +76,17 @@ public class PlayerEnemyQueue : MonoBehaviour
         SetCurrentEnemy(_gameObjects[nextIndex], nextIndex);
     }
 
+    void SwitchEnemyBackward()
+    {
+        int prevIndex = (_currentIndex - 1) % _gameObjects.Count;
+        SetCurrentEnemy(_gameObjects[prevIndex], prevIndex);
+
+    }
+
+
+
+
+
     void SetCurrentEnemy(GameObject newObject)
     {
         _currentEnemy = newObject;
@@ -88,10 +101,15 @@ public class PlayerEnemyQueue : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (!Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Tab))
         {
             SwitchEnemyForward();
         }
         ProcessEnemies();
+
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Tab))
+        {
+            SwitchEnemyBackward();
+        }
     }
 }

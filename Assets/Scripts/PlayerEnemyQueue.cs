@@ -8,8 +8,10 @@ public class PlayerEnemyQueue : MonoBehaviour
 
     public event Action<GameObject> enemyDetected;
     public List<GameObject> _gameObjects = new List<GameObject>();
-
+    [SerializeField]
     GameObject _currentEnemy;
+    [SerializeField]
+    int _currentIndex;
     void Start()
     {
         
@@ -19,12 +21,25 @@ public class PlayerEnemyQueue : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("enemy") && !_gameObjects.Contains(collision.gameObject))
         {
-            _gameObjects.Add(collision.gameObject);
-            _currentEnemy = _gameObjects[0];
-            enemyDetected(_gameObjects[0]);
-            
+            AddEnemiesToList(collision.gameObject);
         }
     }
+
+    void AddEnemiesToList(GameObject newObject)
+    {
+        if (!_gameObjects.Contains(newObject))
+        {
+            _gameObjects.Add(newObject);
+            if (_gameObjects.Count == 1)
+            {
+                SetCurrentEnemy(_gameObjects[0]);
+                enemyDetected(_gameObjects[0]);
+            }
+        }
+
+    }
+
+
 
     void ProcessEnemies()
     {
@@ -33,16 +48,16 @@ public class PlayerEnemyQueue : MonoBehaviour
             if (_currentEnemy == null)
             {
                 _gameObjects.Remove(_currentEnemy);
-                UpdateEnemies();   
+                UpdateEnemiesAfterDelete();   
             }
         }
     }
 
-    void UpdateEnemies()
+    void UpdateEnemiesAfterDelete()
     {
             if (_gameObjects.Count > 0) 
             { 
-                _currentEnemy = _gameObjects[0];
+                SetCurrentEnemy(_gameObjects[0]);
                 enemyDetected(_gameObjects[0]);
                 Debug.Log("New enemy");
             }
@@ -53,8 +68,30 @@ public class PlayerEnemyQueue : MonoBehaviour
  
     }
 
+    void SwitchEnemyForward()
+    {
+        int nextIndex = (_currentIndex + 1) % _gameObjects.Count;
+        SetCurrentEnemy(_gameObjects[nextIndex], nextIndex);
+    }
+
+    void SetCurrentEnemy(GameObject newObject)
+    {
+        _currentEnemy = newObject;
+        _currentIndex = _gameObjects.IndexOf(_currentEnemy);
+    }
+
+    void SetCurrentEnemy(GameObject newgameObject, int newindex)
+    {
+        _currentEnemy = newgameObject;
+        _currentIndex = newindex;
+    }
+
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            SwitchEnemyForward();
+        }
         ProcessEnemies();
     }
 }

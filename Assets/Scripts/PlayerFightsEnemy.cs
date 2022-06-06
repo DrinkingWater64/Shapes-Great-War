@@ -37,15 +37,29 @@ public class PlayerFightsEnemy : MonoBehaviour
 
     void LockEnemy(GameObject enemyObject)
     {
-        _currentEnemy = enemyObject;
-        _currentEnemy.GetComponent<Enemy>().LockedOn();
-        SpellCast(_currentEnemy);
+        if (enemyObject != null)
+        {
+            _currentEnemy = enemyObject;
+            _currentEnemy.GetComponent<Enemy>().LockedOn();
+            SpellCast(_currentEnemy);
+        }
+        else
+        {
+            _currentEnemy = enemyObject;
+        }
     }
 
     void LockNewEnemy(GameObject newEnemy)
     {
-        _currentEnemy.GetComponent<Enemy>().Unlocked();
-        LockEnemy(newEnemy);
+        if (newEnemy != null)
+        {
+            _currentEnemy.GetComponent<Enemy>().Unlocked();
+            LockEnemy(newEnemy);
+        }
+        else
+        {   
+            Debug.Log("null enemy");
+        }
     }
 
     void SpellCast(GameObject enemyObject)

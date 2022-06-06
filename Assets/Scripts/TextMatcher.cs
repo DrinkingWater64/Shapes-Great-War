@@ -8,6 +8,7 @@ public class TextMatcher: MonoBehaviour
 {
 
     public event Action TextMatched;
+    [SerializeField] TextMeshProUGUI textBox;
 
     string _currentText = string.Empty;
     string _remainingText = string.Empty;
@@ -36,7 +37,7 @@ public class TextMatcher: MonoBehaviour
     {
         _currentText = newText;
         _remainingText = _currentText;
-        Debug.Log("current text: "+_currentText);
+        textBox.text = _currentText;
     }
     
     
@@ -51,7 +52,7 @@ public class TextMatcher: MonoBehaviour
                 Debug.Log(keysPressed);
                 EnterLetter(keysPressed);
             }
-            Debug.Log("rem text: "+_remainingText);
+            textBox.text = _remainingText;
         }
     }
 

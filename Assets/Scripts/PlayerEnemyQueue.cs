@@ -26,6 +26,33 @@ public class PlayerEnemyQueue : MonoBehaviour
         }
     }
 
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        RemoveFromQueue(collision.gameObject);
+    }
+
+
+    void RemoveFromQueue(GameObject newObject)
+    {
+        _gameObjects.Remove(newObject);
+        if (_gameObjects.Count == 0)
+        {
+            _currentEnemy = null;
+            _currentIndex = 0;
+            enemySwitched(_currentEnemy);
+        }
+        else
+        {
+            SwitchEnemyBackward();
+        }
+    }
+
+
+
+
+
+
     void AddEnemiesToList(GameObject newObject)
     {
         if (!_gameObjects.Contains(newObject))
@@ -73,17 +100,23 @@ public class PlayerEnemyQueue : MonoBehaviour
 
     void SwitchEnemyForward()
     {
-        int nextIndex = (_currentIndex + 1) % _gameObjects.Count;
-        SetCurrentEnemy(_gameObjects[nextIndex], nextIndex);
-        enemySwitched(_currentEnemy);
+        if (_gameObjects.Count != 0)
+        {
+            int nextIndex = (_currentIndex + 1) % _gameObjects.Count;
+            SetCurrentEnemy(_gameObjects[nextIndex], nextIndex);
+            enemySwitched(_currentEnemy);
+        }
     }
 
     void SwitchEnemyBackward()
     {
-        int len = _gameObjects.Count;
-        int prevIndex = (_currentIndex + len - 1) % len;
-        SetCurrentEnemy(_gameObjects[prevIndex], prevIndex);
-        enemySwitched(_currentEnemy);
+        if (_gameObjects.Count != 0)
+        {
+            int len = _gameObjects.Count;
+            int prevIndex = (_currentIndex + len - 1) % len;
+            SetCurrentEnemy(_gameObjects[prevIndex], prevIndex);
+            enemySwitched(_currentEnemy);
+        }
     }
 
 
@@ -96,11 +129,17 @@ public class PlayerEnemyQueue : MonoBehaviour
         _currentIndex = _gameObjects.IndexOf(_currentEnemy);
     }
 
+
+
+
     void SetCurrentEnemy(GameObject newgameObject, int newindex)
     {
         _currentEnemy = newgameObject;
         _currentIndex = newindex;
     }
+
+
+
 
     private void Update()
     {

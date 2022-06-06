@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Enemy : MonoBehaviour, Attackable, Lockable
+public class Enemy : MonoBehaviour, IAttackable, ILockable
 {
     // TextMeshProUGUI _text;
     public string _spell = "testtext";
@@ -50,18 +50,4 @@ public class Enemy : MonoBehaviour, Attackable, Lockable
     {
         IsDead();
     }
-}
-
-public interface Attackable
-{
-    void Die();
-    public void TakeDamage(float damageInput);
-
-    void IsDead();
-}
-
-public interface Lockable
-{
-    void LockedOn();
-    void Unlocked();
 }

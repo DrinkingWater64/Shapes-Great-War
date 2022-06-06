@@ -26,26 +26,32 @@ public class PlayerFightsEnemy : MonoBehaviour
     }
     void Start()
     {
-
+        
     }
 
     private void Awake()
     {
-        
         textMatcher = GameObject.Find("TextMatcher").GetComponent<TextMatcher>();
+    }
+
+    void TurnOnTextMatcher()
+    {
+            if (textMatcher.gameObject.activeSelf == false)
+                textMatcher.gameObject.SetActive(true);
     }
 
     void LockEnemy(GameObject enemyObject)
     {
         if (enemyObject != null)
         {
+            TurnOnTextMatcher();
             _currentEnemy = enemyObject;
             _currentEnemy.GetComponent<Enemy>().LockedOn();
             SpellCast(_currentEnemy);
         }
         else
         {
-            _currentEnemy = enemyObject;
+            HandleNullEnemy(enemyObject);
         }
     }
 
@@ -57,9 +63,15 @@ public class PlayerFightsEnemy : MonoBehaviour
             LockEnemy(newEnemy);
         }
         else
-        {   
-            Debug.Log("null enemy");
+        {
+            HandleNullEnemy(newEnemy);
         }
+    }
+
+    void HandleNullEnemy(GameObject newEnemy)
+    {
+        textMatcher.ResetTextMatcher();
+            _currentEnemy = newEnemy;
     }
 
     void SpellCast(GameObject enemyObject)

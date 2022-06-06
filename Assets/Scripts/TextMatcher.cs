@@ -99,6 +99,12 @@ public class TextMatcher: MonoBehaviour
         }
     }
 
+    public void ResetTextMatcher()
+    {
+        _currentText = string.Empty;
+        _remainingText = String.Empty;
+    }
+
 
 
 }

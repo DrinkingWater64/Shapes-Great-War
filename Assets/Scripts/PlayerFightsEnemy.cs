@@ -82,6 +82,10 @@ public class PlayerFightsEnemy : MonoBehaviour
     void dealDamage()
     {
         _currentEnemy.GetComponent<Enemy>().TakeDamage(damageOutput);
+        if (_currentEnemy != null)
+        {
+            SpellCast(_currentEnemy);
+        }
     }
 
     // Update is called once per frame

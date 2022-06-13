@@ -735,8 +735,8 @@ Canvas:
   m_GameObject: {fileID: 836306821}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1014,7 +1014,7 @@ GameObject:
   - component: {fileID: 1665112061}
   - component: {fileID: 1665112062}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Grphic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1290,6 +1290,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2270185810148606034, guid: b62f9e98134fb1a4db87e8434ebd6838, type: 3}
+      propertyPath: hp
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 2270185810148606034, guid: b62f9e98134fb1a4db87e8434ebd6838, type: 3}
       propertyPath: _spell
       value: test

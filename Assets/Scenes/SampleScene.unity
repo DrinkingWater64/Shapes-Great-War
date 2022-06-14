@@ -866,6 +866,7 @@ MonoBehaviour:
   _speed: 10
   _lastPosition: {x: 0, y: 0}
   _isMoving: 0
+  _isKeyMoving: 0
 --- !u!114 &1353797504
 MonoBehaviour:
   m_ObjectHideFlags: 0

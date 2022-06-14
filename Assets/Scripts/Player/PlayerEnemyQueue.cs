@@ -8,15 +8,12 @@ public class PlayerEnemyQueue : MonoBehaviour
 
     public event Action<GameObject> enemyDetected;
     public event Action<GameObject> enemySwitched;
+    public event Action enemiesEmptied;
     public List<GameObject> _gameObjects = new List<GameObject>();
     [SerializeField]
     GameObject _currentEnemy;
     [SerializeField]
     int _currentIndex;
-    void Start()
-    {
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -41,6 +38,7 @@ public class PlayerEnemyQueue : MonoBehaviour
             _currentEnemy = null;
             _currentIndex = 0;
             enemySwitched(_currentEnemy);
+            enemiesEmptied();
         }
         else
         {

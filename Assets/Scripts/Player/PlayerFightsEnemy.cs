@@ -14,7 +14,9 @@ public class PlayerFightsEnemy : MonoBehaviour
     {
         gameObject.GetComponent<PlayerEnemyQueue>().enemyDetected += LockEnemy;
         gameObject.GetComponent<PlayerEnemyQueue>().enemySwitched += LockNewEnemy;
+        gameObject.GetComponent<PlayerEnemyQueue>().enemiesEmptied += HandleNullEnemy;
         textMatcher.TextMatched += dealDamage;
+
     }
 
     private void OnDisable()
@@ -22,6 +24,7 @@ public class PlayerFightsEnemy : MonoBehaviour
         gameObject.GetComponent<PlayerEnemyQueue>().enemyDetected -= SpellCast;
         textMatcher.TextMatched -= dealDamage;
         gameObject.GetComponent<PlayerEnemyQueue>().enemySwitched -= LockNewEnemy;
+        gameObject.GetComponent<PlayerEnemyQueue>().enemiesEmptied -= HandleNullEnemy;
         
     }
     void Start()
@@ -49,10 +52,6 @@ public class PlayerFightsEnemy : MonoBehaviour
             _currentEnemy.GetComponent<Enemy>().LockedOn();
             SpellCast(_currentEnemy);
         }
-        else
-        {
-            HandleNullEnemy(enemyObject);
-        }
     }
 
     void LockNewEnemy(GameObject newEnemy)
@@ -62,16 +61,13 @@ public class PlayerFightsEnemy : MonoBehaviour
             _currentEnemy.GetComponent<Enemy>().Unlocked();
             LockEnemy(newEnemy);
         }
-        else
-        {
-            HandleNullEnemy(newEnemy);
-        }
     }
 
-    void HandleNullEnemy(GameObject newEnemy)
+    void HandleNullEnemy()
     {
         textMatcher.ResetTextMatcher();
-            _currentEnemy = newEnemy;
+            _currentEnemy = null;
+        Debug.LogWarning("Null handled");
     }
 
     void SpellCast(GameObject enemyObject)
@@ -89,8 +85,4 @@ public class PlayerFightsEnemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

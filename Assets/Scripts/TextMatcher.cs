@@ -103,6 +103,7 @@ public class TextMatcher: MonoBehaviour
     {
         _currentText = string.Empty;
         _remainingText = String.Empty;
+        textBox.text = _currentText;
     }
 
 

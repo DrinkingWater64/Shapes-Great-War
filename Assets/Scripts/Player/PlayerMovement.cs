@@ -10,8 +10,8 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
 
-        inputMethod = new MouseMovement(transform);
-        // inputMethod = new KeyBoardMovement(transform);
+        // inputMethod = new MouseMovement(transform);
+        inputMethod = new KeyBoardMovement(transform);
     }
     void Update()
     {

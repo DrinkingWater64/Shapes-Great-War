@@ -11,22 +11,25 @@ public class KeyBoardMovement : IPlayerInputMovement
     }
         public void Move(float _speed)
         {
+        Vector2 directoin = Vector2.zero;
             if (Input.GetKey(KeyCode.K))
             {
-                _transform.Translate(Vector3.up* _speed * Time.deltaTime);
+                directoin += Vector2.up;
             }
             if (Input.GetKey(KeyCode.H))
             {
-                _transform.Translate(Vector3.left * _speed * Time.deltaTime);
+                directoin += Vector2.left;
             }
             if (Input.GetKey(KeyCode.J))
             {
-                _transform.Translate(Vector3.down * _speed * Time.deltaTime);
+                directoin += Vector2.down;
             }
             if (Input.GetKey(KeyCode.L))
             {
-                _transform.Translate(Vector3.right * _speed * Time.deltaTime);
+                directoin += Vector2.right;
             }
+
+        _transform.Translate(directoin.normalized * _speed * Time.deltaTime);
         }
 
         

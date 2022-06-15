@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyBindingChecks:
   - KeyBindingActions: 0
-    KeyCode: 119
+    KeyCode: 27
   - KeyBindingActions: 1
-    KeyCode: 115
+    KeyCode: 119
   - KeyBindingActions: 2
-    KeyCode: 97
+    KeyCode: 115
   - KeyBindingActions: 3
+    KeyCode: 97
+  - KeyBindingActions: 4
     KeyCode: 100

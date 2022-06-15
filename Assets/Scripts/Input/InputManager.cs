@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    public InputMode mode;
+
+
     public static InputManager instance;
     [SerializeField] KeyBindings keyBindings;
     private void Awake()

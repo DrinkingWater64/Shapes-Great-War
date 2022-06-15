@@ -26,10 +26,11 @@ public class PlayerMovement : MonoBehaviour
         inputMethodMouse = new MouseMovement(transform);
         inputMethodKeyboard = new WASDmovement(transform);
     }
-    void Update() { 
-
-        inputMethodKeyboard.Move(_speed);
-        inputMethodMouse.Move(_speed);
-        
+    void Update() {
+        if (InputManager.instance.mode == InputMode.COMMAND)
+        {
+            inputMethodKeyboard.Move(_speed);
+            inputMethodMouse.Move(_speed);
+        }
     }
 }

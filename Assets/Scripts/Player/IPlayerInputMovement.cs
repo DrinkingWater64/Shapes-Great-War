@@ -1,4 +1,7 @@
-﻿public interface IPlayerInputMovement
-    {
-        void Move(float speed);
-    }
+﻿using System;
+
+public interface IPlayerInputMovement
+{
+    void Move(float speed);
+
+}

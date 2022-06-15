@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class MouseMovement : IPlayerInputMovement
 {
+
+
     Vector2 _lastPosition;
     bool _isMoving;
     Transform _transform;
@@ -10,6 +13,7 @@ public class MouseMovement : IPlayerInputMovement
     {
         this._transform = transform;
     }
+
 
     public void Move(float _speed)
     {

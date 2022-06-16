@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5635253766828756122}
   - component: {fileID: 4926202489247567003}
+  - component: {fileID: 7584843179236902000}
   m_Layer: 0
   m_Name: FTcontainer
   m_TagString: Untagged
@@ -40,12 +41,24 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6230184211224017412}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49d84878f87556d45a36ffcf9a1c8334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   destroyAfter: 1
+--- !u!114 &7584843179236902000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6230184211224017412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f9e0685c0465c41a9d8d4d79aa3e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8298853073864899053
 GameObject:
   m_ObjectHideFlags: 0

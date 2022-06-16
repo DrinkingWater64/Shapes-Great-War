@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Pool;
 
 public class Enemy : MonoBehaviour, IAttackable, ILockable
 {
@@ -9,7 +10,12 @@ public class Enemy : MonoBehaviour, IAttackable, ILockable
     public string _spell = "testtext";
     [SerializeField] float hp;
     [SerializeField] GameObject FloatingText;
- 
+
+
+    private void Awake()
+    {
+    }
+
     public void Die()
     {
         Destroy(gameObject);
@@ -31,7 +37,6 @@ public class Enemy : MonoBehaviour, IAttackable, ILockable
     public void TakeDamage(float damageInput)
     {
         hp -= damageInput;
-        ShowDamage(damageInput);
     }
 
     public void Unlocked()
@@ -53,10 +58,5 @@ public class Enemy : MonoBehaviour, IAttackable, ILockable
         IsDead();
     }
 
-    void ShowDamage( float damage )
-    {
-        GameObject gameObject = Instantiate(FloatingText, transform.position, Quaternion.identity);
-        gameObject.GetComponentInChildren<TextMesh>().text = damage.ToString();
-    }
-
+   
 }

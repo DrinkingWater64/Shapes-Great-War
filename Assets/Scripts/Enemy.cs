@@ -10,10 +10,12 @@ public class Enemy : MonoBehaviour, IAttackable, ILockable
     public string _spell = "testtext";
     [SerializeField] float hp;
     [SerializeField] GameObject FloatingText;
+    [SerializeField] FloatingTextPool FTpool;
 
 
     private void Awake()
     {
+        FTpool = GameObject.Find("FloatingTextPool").GetComponent<FloatingTextPool>();
     }
 
     public void Die()
@@ -37,6 +39,7 @@ public class Enemy : MonoBehaviour, IAttackable, ILockable
     public void TakeDamage(float damageInput)
     {
         hp -= damageInput;
+        FTpool.SpawnPrefab(damageInput.ToString(), transform);
     }
 
     public void Unlocked()

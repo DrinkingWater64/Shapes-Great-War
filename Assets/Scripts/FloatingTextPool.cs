@@ -22,7 +22,6 @@ public class FloatingTextPool : MonoBehaviour
     private void OnGet(FloatingTextController obj)
     {
         obj.gameObject.SetActive(true);
-        obj.transform.position = transform.position;
     }
 
     private void OnRelease(FloatingTextController obj)
@@ -37,9 +36,12 @@ public class FloatingTextPool : MonoBehaviour
         return floatingText;
     }
 
-    public void SpawnPrefab()
+    public void SpawnPrefab(String text, Transform transform)
     {
-        floatingTextPool.Get();
+        var _object = floatingTextPool.Get();
+        _object.transform.position = transform.position;
+        _object.GetComponentInChildren<TextMesh>().text = text;
+
     }
 
     void Start()
@@ -50,10 +52,5 @@ public class FloatingTextPool : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SpawnPrefab();
-
-        }
     }
 }

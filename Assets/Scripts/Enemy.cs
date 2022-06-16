@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour, IAttackable, ILockable
     // TextMeshProUGUI _text;
     public string _spell = "testtext";
     [SerializeField] float hp;
+    [SerializeField] GameObject FloatingText;
  
     public void Die()
     {
@@ -30,6 +31,7 @@ public class Enemy : MonoBehaviour, IAttackable, ILockable
     public void TakeDamage(float damageInput)
     {
         hp -= damageInput;
+        ShowDamage(damageInput);
     }
 
     public void Unlocked()
@@ -50,4 +52,11 @@ public class Enemy : MonoBehaviour, IAttackable, ILockable
     {
         IsDead();
     }
+
+    void ShowDamage( float damage )
+    {
+        GameObject gameObject = Instantiate(FloatingText, transform.position, Quaternion.identity);
+        gameObject.GetComponentInChildren<TextMesh>().text = damage.ToString();
+    }
+
 }

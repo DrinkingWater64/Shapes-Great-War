@@ -13,7 +13,6 @@ public class TextMatcher: MonoBehaviour
     string _currentText = string.Empty;
     string _remainingText = string.Empty;
 
-    string _test = "gogo";
 
     private void Awake()
     {
@@ -23,7 +22,7 @@ public class TextMatcher: MonoBehaviour
     void Start()
     {
         {
-            SetCurrentText(_test);
+            SetCurrentText(_currentText);
         }
     }
 

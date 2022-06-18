@@ -55,7 +55,6 @@ public class Idle: IEnemyBehaviourState
         {
             eb.currentPosition = new Vector2(eb.transform.position.x, eb.transform.position.y);
         }
-        Debug.Log("Idle");
         ChangeState();
     }
 }
@@ -80,7 +79,6 @@ public class AttackPlayer : IEnemyBehaviourState
         {
             eb = enemy;
         }
-        Debug.Log("Attacking");
                Attack();
         ChangeState();
     }
@@ -119,7 +117,6 @@ public class Retreat: IEnemyBehaviourState
             eb = enemy;
         }
         timer += Time.deltaTime;
-        Debug.Log("Retreating");
         ChangeState();
         }
 }

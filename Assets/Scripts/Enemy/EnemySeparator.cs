@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class EnemySeparator : MonoBehaviour
 {
 
-    GameObject[] enemies;
+    [SerializeField] GameObject[] enemies;
     public float SpaceBetween = 1.5f;
     // Start is called before the first frame update
     void Start()
@@ -20,11 +21,18 @@ public class EnemySeparator : MonoBehaviour
         {
             if (go != gameObject)
             {
-                float distance = Vector2.Distance(go.transform.position, this.transform.position);
-                if (distance <= SpaceBetween)
+                if (go == null)
                 {
-                    Vector2 dir = transform.position - go.transform.position;
-                    transform.Translate(dir * Time.deltaTime * 3);
+                    enemies = enemies.Where<GameObject>(val => val != go).ToArray();
+                }
+                else
+                {
+                    float distance = Vector2.Distance(go.transform.position, this.transform.position);
+                    if (distance <= SpaceBetween)
+                    {
+                        Vector2 dir = transform.position - go.transform.position;
+                        transform.Translate(dir * Time.deltaTime * 3);
+                    }
                 }
             }
         }

@@ -87,7 +87,7 @@ public class AttackPlayer : IEnemyBehaviourState
 
     void Attack()
     { 
-        if (Vector2.Distance(eb.transform.position, eb.player.transform.position) > 1)
+        if (Vector2.Distance(eb.transform.position, eb.player.transform.position) > 1.6)
         {
             Vector2 dir = eb.player.transform.position - eb.transform.position;
             eb.transform.Translate(dir.normalized * 3 * Time.deltaTime);

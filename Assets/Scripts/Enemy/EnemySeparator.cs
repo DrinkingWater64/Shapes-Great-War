@@ -24,7 +24,7 @@ public class EnemySeparator : MonoBehaviour
                 if (distance <= SpaceBetween)
                 {
                     Vector2 dir = transform.position - go.transform.position;
-                    transform.Translate(dir * Time.deltaTime * 7);
+                    transform.Translate(dir * Time.deltaTime * 3);
                 }
             }
         }

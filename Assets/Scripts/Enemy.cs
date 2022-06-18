@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour, IAttackable, ILockable
     [SerializeField] float hp;
     [SerializeField] GameObject FloatingText;
     [SerializeField] FloatingTextPool FTpool;
+    [SerializeField] GameObject LockIndector;
 
 
     private void Awake()
@@ -33,7 +34,8 @@ public class Enemy : MonoBehaviour, IAttackable, ILockable
 
     public void LockedOn()
     {
-        gameObject.transform.GetChild(1).gameObject.SetActive(true);
+        LockIndector.SetActive(true);
+        Debug.Log("locked");
     }
 
     public void TakeDamage(float damageInput)
@@ -44,7 +46,8 @@ public class Enemy : MonoBehaviour, IAttackable, ILockable
 
     public void Unlocked()
     {
-        gameObject.transform.GetChild(1).gameObject.SetActive(false);
+
+        LockIndector.SetActive(false);
     }
 
 

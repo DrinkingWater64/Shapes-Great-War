@@ -24,7 +24,7 @@ public class FloatingTextController : MonoBehaviour
     private void OnEnable()
     {
         
-        Invoke("FloatText", 2f);
+        Invoke("FloatText", .6f);
     }
 
 

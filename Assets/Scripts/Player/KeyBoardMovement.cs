@@ -30,8 +30,13 @@ public class KeyBoardMovement : IPlayerInputMovement
             directoin += Vector2.right;
         }
 
+        _transform.gameObject.GetComponent<Rigidbody2D>().MovePosition(new Vector2(
+            (_transform.position.x + directoin.x * _speed),
+             _transform.position.y + directoin.y * _speed));
 
-        _transform.Translate(directoin.normalized * _speed * Time.deltaTime);
+        Debug.Log("moving");
+
+       // _transform.Translate(directoin.normalized * _speed * Time.deltaTime);
     }
 
 

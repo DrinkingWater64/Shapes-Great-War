@@ -31,7 +31,15 @@ public class WASDmovement :  IPlayerInputMovement
             directoin += Vector2.right;
         }
 
+        /*_transform.gameObject.GetComponent<Rigidbody2D>().MovePosition(new Vector2(
+        (_transform.position.x + directoin.normalized.x * speed * Time.deltaTime),
+        _transform.position.y + directoin.normalized.y * speed * Time.deltaTime));
+        */
 
-        _transform.Translate(directoin.normalized * speed * Time.deltaTime);
+        _transform.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(directoin.x, directoin.y).normalized * speed;
+
+        Debug.Log("move");
+
+        // _transform.Translate(directoin.normalized * speed * Time.deltaTime);
     }
 }

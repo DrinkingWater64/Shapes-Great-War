@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float _speed = 10;
-    IPlayerInputMovement inputMethodMouse;
     IPlayerInputMovement inputMethodKeyboard;
 
 
@@ -14,23 +13,20 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    void ResetMouse()
-    {
-        inputMethodMouse = new MouseMovement(transform);
-    }
 
 
     private void Awake()
     {
-
-        inputMethodMouse = new MouseMovement(transform);
         inputMethodKeyboard = new WASDmovement(transform);
     }
     void Update() {
-        if (InputManager.instance.mode == InputMode.COMMAND)
+    }
+
+    private void FixedUpdate()
+    {
+         if (InputManager.instance.mode == InputMode.COMMAND)
         {
             inputMethodKeyboard.Move(_speed);
-            inputMethodMouse.Move(_speed);
         }
     }
 }

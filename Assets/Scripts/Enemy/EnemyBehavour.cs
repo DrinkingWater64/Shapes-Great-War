@@ -79,14 +79,11 @@ public class ChasePlayer : IEnemyBehaviourState
         {
             eb = enemy;
         }
-        Attack();
-        if (Vector2.Distance(eb.transform.position, eb.player.transform.position) > 10) // here 10 is enemies sight distance
-        {
-            ChangeState();
-        }
+        Chase();
+        ChangeState();
     }
 
-    void Attack()
+    void Chase()
     { 
         if (Vector2.Distance(eb.transform.position, eb.player.transform.position) > 1.6)
         {

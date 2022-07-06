@@ -102,6 +102,8 @@ public class ChasePlayer : IEnemyBehaviourState
 
 public class AttackPlayer : IEnemyBehaviourState
 {
+    float timer = 0;
+    float waitTime = 5;
     EnemyBehavour eb;
     public void ChangeState()
     {
@@ -117,7 +119,12 @@ public class AttackPlayer : IEnemyBehaviourState
         {
             eb = enemy;
         }
-        Attack();
+        if (timer>waitTime)
+        {
+            Attack();
+            timer = 0;
+        }
+        timer += Time.deltaTime;
         ChangeState();
     }
 
@@ -126,8 +133,10 @@ public class AttackPlayer : IEnemyBehaviourState
         if (Vector2.Distance(eb.transform.position, eb.player.transform.position) <= 2 )
         {
             Debug.Log("attacking player");
+            eb.player.GetComponent<Player>().TakeDamage(1);
         }
     }
+
 }
 
 

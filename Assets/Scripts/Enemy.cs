@@ -13,7 +13,6 @@ public class Enemy : MonoBehaviour, IAttackable, ILockable
     [SerializeField] FloatingTextPool FTpool;
     [SerializeField] GameObject LockIndector;
 
-
     private void Awake()
     {
         FTpool = GameObject.Find("FloatingTextPool").GetComponent<FloatingTextPool>();

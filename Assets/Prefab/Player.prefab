@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3462245565870446820}
-  - component: {fileID: 3462245565870446823}
   - component: {fileID: 3462245565870446616}
+  - component: {fileID: 3462245565870446823}
   - component: {fileID: 3462245565870446617}
   - component: {fileID: 3462245565870446619}
+  - component: {fileID: 4478579911388443297}
   - component: {fileID: 3462245565870446618}
   m_Layer: 0
   m_Name: Player
@@ -37,19 +38,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3462245565870446823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3462245565870446821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b74f073de197d47afb7c36696d0203, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 10
 --- !u!50 &3462245565870446616
 Rigidbody2D:
   serializedVersion: 4
@@ -71,6 +59,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &3462245565870446823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3462245565870446821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b74f073de197d47afb7c36696d0203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 10
 --- !u!114 &3462245565870446617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +101,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageOutput: 12
   textMatcher: {fileID: 0}
+--- !u!114 &4478579911388443297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3462245565870446821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66343457dad5c00488bd38d8fa2a51fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
 --- !u!61 &3462245565870446618
 BoxCollider2D:
   m_ObjectHideFlags: 0

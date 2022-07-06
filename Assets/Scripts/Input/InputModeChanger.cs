@@ -6,12 +6,17 @@ using System;
 public class InputModeChanger : MonoBehaviour
 {
 
-
+    [SerializeField] Canvas tmc;
     [SerializeField] TextMatcher tm;
 
     void TurnOnOffTM()
     {
         tm.enabled = !tm.enabled;
+    }
+
+    void TurnOnOffTMC()
+    {
+        tmc.enabled = !tmc.enabled;
     }
 
     void Update()
@@ -27,6 +32,7 @@ public class InputModeChanger : MonoBehaviour
                 InputManager.instance.mode = InputMode.COMMAND;
             }
             TurnOnOffTM();
+            TurnOnOffTMC();
         }
     }
 }

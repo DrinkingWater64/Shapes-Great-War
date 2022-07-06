@@ -88,11 +88,11 @@ public class AttackPlayer : IEnemyBehaviourState
         if (Vector2.Distance(eb.transform.position, eb.player.transform.position) > 1.6)
         {
             Vector2 dir = eb.player.transform.position - eb.transform.position;
-             eb.transform.Translate(dir.normalized * 3 * Time.deltaTime);
-            /* eb.gameObject.GetComponent<Rigidbody2D>().MovePosition(new Vector2(
+             // eb.transform.Translate(dir.normalized * 3 * Time.deltaTime);
+             eb.gameObject.GetComponent<Rigidbody2D>().MovePosition(new Vector2(
                 eb.transform.position.x + dir.x * 3 * Time.deltaTime,
                 eb.transform.position.y + dir.y * 3 * Time.deltaTime
-                )); */
+                )); 
         }
     }
 }

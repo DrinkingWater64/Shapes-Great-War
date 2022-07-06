@@ -71,6 +71,11 @@ public class ChasePlayer : IEnemyBehaviourState
         {
             eb.currentState = new Retreat();
         }
+        else if (Vector2.Distance(eb.transform.position, eb.player.transform.position) <= 1.6)
+
+        {
+            eb.currentState = new AttackPlayer();
+        }
     }
 
     public void Perform(EnemyBehavour enemy)
@@ -92,6 +97,40 @@ public class ChasePlayer : IEnemyBehaviourState
         }
     }
 }
+
+
+
+public class AttackPlayer : IEnemyBehaviourState
+{
+    EnemyBehavour eb;
+    public void ChangeState()
+    {
+        if (Vector2.Distance(eb.transform.position, eb.player.transform.position) > 2)
+        {
+            eb.currentState = new ChasePlayer();
+        }
+    }
+
+    public void Perform(EnemyBehavour enemy)
+    {
+        if (eb == null)
+        {
+            eb = enemy;
+        }
+        Attack();
+        ChangeState();
+    }
+
+    public void Attack()
+    {
+        if (Vector2.Distance(eb.transform.position, eb.player.transform.position) <= 2 )
+        {
+            Debug.Log("attacking player");
+        }
+    }
+}
+
+
 
 public class Retreat: IEnemyBehaviourState
 {

@@ -41,7 +41,7 @@ public class Idle: IEnemyBehaviourState
     {
         if (Vector2.Distance(eb.transform.position, eb.player.transform.position) < 10)
         {
-            eb.currentState = new AttackPlayer();
+            eb.currentState = new ChasePlayer();
         }
     }
 
@@ -60,7 +60,7 @@ public class Idle: IEnemyBehaviourState
 }
 
 
-public class AttackPlayer : IEnemyBehaviourState
+public class ChasePlayer : IEnemyBehaviourState
 {
 
 
@@ -79,7 +79,7 @@ public class AttackPlayer : IEnemyBehaviourState
         {
             eb = enemy;
         }
-               Attack();
+        Attack();
         ChangeState();
     }
 
@@ -106,7 +106,7 @@ public class Retreat: IEnemyBehaviourState
     {
          if (Vector2.Distance(eb.transform.position, eb.player.transform.position) < 5)
         {
-            eb.currentState = new AttackPlayer();
+            eb.currentState = new ChasePlayer();
         } else if(timer >= waitTime)
         {
             eb.currentState = new Idle();
@@ -124,6 +124,3 @@ public class Retreat: IEnemyBehaviourState
         ChangeState();
         }
 }
-
-
-

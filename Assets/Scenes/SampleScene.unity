@@ -496,6 +496,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b62f9e98134fb1a4db87e8434ebd6838, type: 3}
+--- !u!223 &1163533681 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 9152482238582614373, guid: 80db2c02f2765044cac429ac719ca3af, type: 3}
+  m_PrefabInstance: {fileID: 9152482238285278957}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1353797501 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3462245565870446820, guid: fda44621b8d8fba4b858034c282d0c09, type: 3}
@@ -1032,6 +1037,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9152482238523337227, guid: 80db2c02f2765044cac429ac719ca3af, type: 3}
+      propertyPath: tmc
+      value: 
+      objectReference: {fileID: 1163533681}
     - target: {fileID: 9152482238523337230, guid: 80db2c02f2765044cac429ac719ca3af, type: 3}
       propertyPath: m_Name
       value: TextMatcher
@@ -1040,5 +1049,17 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 9152482238582614373, guid: 80db2c02f2765044cac429ac719ca3af, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152482238582614376, guid: 80db2c02f2765044cac429ac719ca3af, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152482238900632056, guid: 80db2c02f2765044cac429ac719ca3af, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80db2c02f2765044cac429ac719ca3af, type: 3}

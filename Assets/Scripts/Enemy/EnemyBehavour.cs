@@ -80,7 +80,10 @@ public class ChasePlayer : IEnemyBehaviourState
             eb = enemy;
         }
         Attack();
-        ChangeState();
+        if (Vector2.Distance(eb.transform.position, eb.player.transform.position) > 10) // here 10 is enemies sight distance
+        {
+            ChangeState();
+        }
     }
 
     void Attack()
@@ -88,11 +91,7 @@ public class ChasePlayer : IEnemyBehaviourState
         if (Vector2.Distance(eb.transform.position, eb.player.transform.position) > 1.6)
         {
             Vector2 dir = eb.player.transform.position - eb.transform.position;
-             // eb.transform.Translate(dir.normalized * 3 * Time.deltaTime);
-             eb.gameObject.GetComponent<Rigidbody2D>().MovePosition(new Vector2(
-                eb.transform.position.x + dir.x * 3 * Time.deltaTime,
-                eb.transform.position.y + dir.y * 3 * Time.deltaTime
-                )); 
+            eb.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(dir.x, dir.y).normalized * 1.5f;
         }
     }
 }

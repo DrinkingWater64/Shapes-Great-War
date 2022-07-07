@@ -17022,6 +17022,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!223 &1725822820 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 9152482238582614373, guid: 80db2c02f2765044cac429ac719ca3af, type: 3}
+  m_PrefabInstance: {fileID: 1806912435}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1806912435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17073,6 +17078,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9152482238523337227, guid: 80db2c02f2765044cac429ac719ca3af, type: 3}
+      propertyPath: tmc
+      value: 
+      objectReference: {fileID: 1725822820}
     - target: {fileID: 9152482238523337230, guid: 80db2c02f2765044cac429ac719ca3af, type: 3}
       propertyPath: m_Name
       value: TextMatcher
@@ -17081,6 +17090,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 67811488}
+    - target: {fileID: 9152482238582614373, guid: 80db2c02f2765044cac429ac719ca3af, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9152482238582614373, guid: 80db2c02f2765044cac429ac719ca3af, type: 3}
       propertyPath: m_SortingOrder
       value: 25

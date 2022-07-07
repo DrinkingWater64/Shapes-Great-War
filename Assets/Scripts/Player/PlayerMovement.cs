@@ -28,5 +28,9 @@ public class PlayerMovement : MonoBehaviour
         {
             inputMethodKeyboard.Move(_speed);
         }
+        else if (InputManager.instance.mode == InputMode.INSERT && gameObject.GetComponent<Rigidbody2D>().velocity != Vector2.zero)
+        {
+            gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        }
     }
 }

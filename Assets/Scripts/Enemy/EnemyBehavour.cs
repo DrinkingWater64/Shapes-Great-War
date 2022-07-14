@@ -11,18 +11,42 @@ public class EnemyBehavour : MonoBehaviour
     public IEnemyBehaviourState currentState;
 
     public Animator _animator;
-    
+    Transform _transform;
+    bool isFlipped = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        _transform = transform;
         player = GameObject.FindGameObjectWithTag("Player");
-        currentState = new Idle();    
+        currentState = new Idle();
     }
 
     // Update is called once per frame
     void Update()
     {
         currentState.Perform(this);
+        Vector3 dir = _transform.position - player.transform.position;
+        if (dir.x > 0 && isFlipped == false)
+        {
+            isFlipped = true;
+            FlipBody();
+        }
+        else if(dir.x < 0 && isFlipped == true)
+        {
+            isFlipped = false;
+            FlipBody();
+        }
+    }
+
+
+
+    void FlipBody()
+    {
+        Vector3 currentScale = _transform.localScale;
+        currentScale.x *= -1;
+        _transform.localScale = currentScale;
     }
 
 }

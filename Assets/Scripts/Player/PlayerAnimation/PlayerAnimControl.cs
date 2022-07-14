@@ -7,6 +7,7 @@ public class PlayerAnimControl : MonoBehaviour
 {
     [SerializeField]
     Animator _animator;
+    Transform _transform;
 
 
     [SerializeField]
@@ -16,11 +17,22 @@ public class PlayerAnimControl : MonoBehaviour
     private void OnEnable()
     {
         playerMovement.OnMovement += PlayerMovement_OnMovementStart;
+        playerMovement.OnFlipped += PlayerMovement_OnFlipped;
+    }
+
+    private void PlayerMovement_OnFlipped()
+    {
+        Vector3 currentScale = _transform.localScale;
+        currentScale.x *= -1;
+        _transform.localScale = currentScale;
+
+        Debug.Log("flippppp");
     }
 
     private void OnDisable()
     {
         playerMovement.OnMovement -= PlayerMovement_OnMovementStart;
+        playerMovement.OnFlipped -= PlayerMovement_OnFlipped;
     }
 
     private void PlayerMovement_OnMovementStart(float velocity)
@@ -32,7 +44,7 @@ public class PlayerAnimControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _transform = gameObject.transform;
     }
 
     // Update is called once per frame

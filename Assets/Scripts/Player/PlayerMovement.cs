@@ -9,7 +9,10 @@ public class PlayerMovement : MonoBehaviour
     IPlayerInputMovement inputMethodKeyboard;
     Rigidbody2D _rb;
 
+    bool _isFlipped = false;
+
     public event Action<float> OnMovement;
+    public event Action OnFlipped;
 
     private void OnEnable()
     {
@@ -25,7 +28,25 @@ public class PlayerMovement : MonoBehaviour
     {
         inputMethodKeyboard = new WASDmovement(transform);
     }
+
+
     void Update() {
+        if (_rb.velocity.x < 0 && _isFlipped == false)
+        {
+            _isFlipped = true;
+            if (OnFlipped != null)
+            {
+                OnFlipped();
+            }
+        }
+        else if (_rb.velocity.x > 0 && _isFlipped == true)
+        {
+            _isFlipped = false;
+            if (OnFlipped != null)
+            {
+                OnFlipped();
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -44,4 +65,7 @@ public class PlayerMovement : MonoBehaviour
             OnMovement(_rb.velocity.magnitude);
         }
     }
+
+
+    
 }

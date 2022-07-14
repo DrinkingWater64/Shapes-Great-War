@@ -9,6 +9,8 @@ public class EnemyBehavour : MonoBehaviour
     public Vector2 currentPosition;
     public GameObject player;
     public IEnemyBehaviourState currentState;
+
+    public Animator _animator;
     
     // Start is called before the first frame update
     void Start()
@@ -41,6 +43,7 @@ public class Idle: IEnemyBehaviourState
     {
         if (Vector2.Distance(eb.transform.position, eb.player.transform.position) < 10)
         {
+            eb._animator.Play("Walk");
             eb.currentState = new ChasePlayer();
         }
     }
@@ -69,11 +72,14 @@ public class ChasePlayer : IEnemyBehaviourState
     {
         if (Vector2.Distance(eb.transform.position, eb.player.transform.position) >= 10)
         {
+
+            eb._animator.Play("idle");
             eb.currentState = new Retreat();
         }
         else if (Vector2.Distance(eb.transform.position, eb.player.transform.position) <= 1.6)
 
         {
+            eb._animator.Play("attack");
             eb.currentState = new AttackPlayer();
         }
     }
@@ -109,6 +115,8 @@ public class AttackPlayer : IEnemyBehaviourState
     {
         if (Vector2.Distance(eb.transform.position, eb.player.transform.position) > 2)
         {
+
+            eb._animator.Play("Walk");
             eb.currentState = new ChasePlayer();
         }
     }

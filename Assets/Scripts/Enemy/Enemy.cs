@@ -12,6 +12,12 @@ public class Enemy : MonoBehaviour, IAttackable, ILockable
     [SerializeField] GameObject FloatingText;
     [SerializeField] FloatingTextPool FTpool;
     [SerializeField] GameObject LockIndector;
+    [SerializeField] GameObject player;
+    [SerializeField] float flipperCapLeft;
+    [SerializeField] float flipperCapRight;
+    bool isFlipped = false;
+
+    Transform _transform;
 
     private void Awake()
     {
@@ -54,6 +60,8 @@ public class Enemy : MonoBehaviour, IAttackable, ILockable
     // Start is called before the first frame update
     void Start()
     {
+        _transform = transform;
+        player = GameObject.FindGameObjectWithTag("Player");
         // _text.text = _spell;
     }
 
@@ -61,7 +69,27 @@ public class Enemy : MonoBehaviour, IAttackable, ILockable
     void Update()
     {
         IsDead();
+        Vector3 dir = _transform.position - player.transform.position;
+        if (dir.x >= flipperCapLeft && isFlipped == false)
+        {
+            isFlipped = true;
+            FlipBody();
+        }
+        else if(dir.x < flipperCapRight && isFlipped == true)
+        {
+            isFlipped = false;
+            FlipBody();
+        }
+
     }
+
+    void FlipBody()
+    {
+        Vector3 currentScale = _transform.localScale;
+        currentScale.x *= -1;
+        _transform.localScale = currentScale;
+    }
+
 
    
 }

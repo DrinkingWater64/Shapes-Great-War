@@ -32,16 +32,17 @@ public class PlayerEnemyQueue : MonoBehaviour
 
     void RemoveFromQueue(GameObject newObject)
     {
-        _gameObjects.Remove(newObject);
-        if (_gameObjects.Count == 0)
+        if (_gameObjects.Count == 1)
         {
+            enemiesEmptied();
             _currentEnemy = null;
             _currentIndex = 0;
             enemySwitched(_currentEnemy);
-            enemiesEmptied();
+            _gameObjects.Remove(newObject);
         }
         else
         {
+            _gameObjects.Remove(newObject);
             SwitchEnemyBackward();
         }
     }

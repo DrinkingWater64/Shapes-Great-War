@@ -66,7 +66,8 @@ public class PlayerFightsEnemy : MonoBehaviour
     void HandleNullEnemy()
     {
         textMatcher.ResetTextMatcher();
-            _currentEnemy = null;
+        _currentEnemy.GetComponent<Enemy>().Unlocked();
+        _currentEnemy = null;
         Debug.LogWarning("Null handled");
     }
 

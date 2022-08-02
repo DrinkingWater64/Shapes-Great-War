@@ -8,16 +8,16 @@ public class Enemy : MonoBehaviour, IAttackable, ILockable
 {
     // TextMeshProUGUI _text;
     public string _spell = "testtext";
-    [SerializeField] float hp;
-    [SerializeField] GameObject FloatingText;
-    [SerializeField] FloatingTextPool FTpool;
-    [SerializeField] GameObject LockIndector;
-    [SerializeField] GameObject player;
-    [SerializeField] float flipperCapLeft;
-    [SerializeField] float flipperCapRight;
-    bool isFlipped = false;
+    [SerializeField] protected float hp;
+    [SerializeField] protected GameObject FloatingText;
+    [SerializeField] protected FloatingTextPool FTpool;
+    [SerializeField] protected GameObject LockIndector;
+    [SerializeField] protected GameObject player;
+    [SerializeField] protected float flipperCapLeft;
+    [SerializeField] protected float flipperCapRight;
+    protected bool isFlipped = false;
 
-    Transform _transform;
+    protected Transform _transform;
 
     private void Awake()
     {
@@ -83,7 +83,7 @@ public class Enemy : MonoBehaviour, IAttackable, ILockable
 
     }
 
-    void FlipBody()
+    protected void FlipBody()
     {
         Vector3 currentScale = _transform.localScale;
         currentScale.x *= -1;

@@ -5,12 +5,21 @@ using UnityEngine.UI;
 
 public class Stats : MonoBehaviour
 {
-
+    [SerializeField] private Player _player;
+    private float currenthp;
+    private float maxhp;
     [SerializeField] private Image bar;
 
+    private void OnEnable()
+    {
+        _player.DamageTaken += SetBar;
+    }
 
+    private void OnDisable()
+    {
+        _player.DamageTaken -= SetBar;
+    }
     void Start()
-
     {
         
     }
@@ -20,4 +29,13 @@ public class Stats : MonoBehaviour
     {
         
     }
+
+    void SetBar(float hp)
+    {
+        currenthp = _player.Hp;
+        maxhp = _player.MaximumHp;
+        bar.fillAmount = currenthp / maxhp;
+    }
+
+
 }

@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+
+    [SerializeField]
+    float _damageInput;
+    [SerializeField]
+    GameObject _player;
     void Start()
     {
-        
+        _player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
+
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("trigger work pls");
+
+         if (collision.CompareTag("Player"))
+        {
+            _player.GetComponent<Player>().TakeDamage(_damageInput);
+            Debug.Log("projectile damgae");
+        }
+    }
+
 }

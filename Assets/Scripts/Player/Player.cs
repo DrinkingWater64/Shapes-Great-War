@@ -6,6 +6,7 @@ public class Player : MonoBehaviour, IAttackable
 {
 
     [SerializeField] private float hp;
+    [SerializeField] private float maximumHp;
 
     public void Die()
     {

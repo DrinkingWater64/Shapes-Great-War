@@ -21,13 +21,15 @@ public class StompAttack : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject == _player)
+         if (collision.gameObject == _player)
         {
             _player.GetComponent<Player>().TakeDamage(_damageInput);
             Debug.Log("Kick damgae");
         }
+  
     }
 
 }

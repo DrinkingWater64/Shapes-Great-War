@@ -2,7 +2,7 @@
  an attempt of a rpg styled typing game
  
  Enemy with state behavour
- https://github.com/DrinkingWater64/Shapes-Great-War/blob/main/gifs/enemy.gif
+ ![](https://github.com/DrinkingWater64/Shapes-Great-War/blob/main/gifs/enemy.gif)
  
  
  Boss fight with 2 stages

@@ -6,9 +6,13 @@ using UnityEngine.UI;
 public class Stats : MonoBehaviour
 {
     [SerializeField] private Player _player;
+    [SerializeField]
     private float currenthp;
+    [SerializeField]
     private float maxhp;
     [SerializeField] private Image bar;
+
+
 
     private void OnEnable()
     {
@@ -21,7 +25,8 @@ public class Stats : MonoBehaviour
     }
     void Start()
     {
-        
+        currenthp = _player.GetComponent<Player>().Hp;
+        maxhp = _player.GetComponent<Player>().MaximumHp;
     }
 
     // Update is called once per frame
@@ -36,6 +41,4 @@ public class Stats : MonoBehaviour
         maxhp = _player.MaximumHp;
         bar.fillAmount = currenthp / maxhp;
     }
-
-
 }

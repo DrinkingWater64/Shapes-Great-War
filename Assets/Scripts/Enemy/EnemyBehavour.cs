@@ -8,6 +8,7 @@ public class EnemyBehavour : MonoBehaviour
 
     public Vector2 currentPosition;
     public GameObject player;
+    public Transform arm;
     public IEnemyBehaviourState currentState;
 
     public Animator _animator;
@@ -27,7 +28,7 @@ public class EnemyBehavour : MonoBehaviour
     void Update()
     {
         currentState.Perform(this);
-           }
+    }
 
 
 
@@ -86,7 +87,7 @@ public class ChasePlayer : IEnemyBehaviourState
         else if (Vector2.Distance(eb.transform.position, eb.player.transform.position) <= 1.6)
 
         {
-            eb._animator.Play("attack");
+            eb._animator.Play("idle");
             eb.currentState = new AttackPlayer();
         }
     }
@@ -116,7 +117,7 @@ public class ChasePlayer : IEnemyBehaviourState
 public class AttackPlayer : IEnemyBehaviourState
 {
     float timer = 0;
-    float waitTime = 5;
+    float waitTime = 1.5f;
     EnemyBehavour eb;
     public void ChangeState()
     {
@@ -139,16 +140,20 @@ public class AttackPlayer : IEnemyBehaviourState
             Attack();
             timer = 0;
         }
+        // Debug.Log(Vector2.Distance(eb.arm.position, eb.player.transform.position));
+
         timer += Time.deltaTime;
         ChangeState();
     }
 
     public void Attack()
     {
-        if (Vector2.Distance(eb.transform.position, eb.player.transform.position) <= 2 )
+        if (Vector2.Distance(eb.arm.position, eb.player.transform.position) <= 1.3 )
         {
+            eb._animator.Play("attack");
+             Debug.Log(Vector2.Distance(eb.arm.position, eb.player.transform.position));
+            //eb.player.GetComponent<Player>().TakeDamage(20);
             Debug.Log("attacking player");
-            eb.player.GetComponent<Player>().TakeDamage(1);
         }
     }
 

@@ -59,4 +59,8 @@ public class Player : MonoBehaviour, IAttackable
     {
         
     }
+    public void viva()
+    {
+        Debug.Log("lllllllllllllllllll");
+    }
 }

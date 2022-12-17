@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour, IAttackable, ILockable
     // TextMeshProUGUI _text;
     public string _spell = "testtext";
     [SerializeField] protected float hp;
+    [SerializeField] protected float damagepower;
     [SerializeField] protected GameObject FloatingText;
     [SerializeField] protected FloatingTextPool FTpool;
     [SerializeField] protected GameObject LockIndector;
@@ -47,6 +48,15 @@ public class Enemy : MonoBehaviour, IAttackable, ILockable
     {
         hp -= damageInput;
         FTpool.SpawnPrefab(damageInput.ToString(), transform);
+    }
+
+
+
+
+    public void attackPlayer()
+    {
+        Debug.Log("heloooooooooo");
+        player.GetComponent<Player>().TakeDamage(20);
     }
 
     public void Unlocked()
